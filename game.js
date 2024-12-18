@@ -8,6 +8,8 @@ const enemyShips = [
     new EnemyShip(20, 20)
 ];
 
+let turn = 0;
+
 function handlePlayerInput(event) {
     switch (event.key) {
         case 'ArrowUp':
@@ -38,6 +40,8 @@ function handlePlayerInput(event) {
             playerShip.shoot();
             break;
     }
+    turn++;
+    gameLoop();
 }
 
 document.addEventListener('keydown', handlePlayerInput);
@@ -46,12 +50,16 @@ function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     playerShip.draw(ctx);
-    enemyShips.forEach(ship => {
-        ship.moveRandomly();
-        ship.draw(ctx);
-    });
-
-    requestAnimationFrame(gameLoop);
+    if (turn % 2 === 0) {
+        enemyShips.forEach(ship => {
+            ship.moveRandomly();
+            ship.draw(ctx);
+        });
+    } else {
+        enemyShips.forEach(ship => {
+            ship.draw(ctx);
+        });
+    }
 }
 
 gameLoop();
