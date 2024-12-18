@@ -23,3 +23,15 @@ In the future, we will add ships with a smarter algorithm.
    ```
 
 3. Open `index.html` in your web browser to start the game.
+
+## How to Publish the Repository
+
+1. Go to your repository on GitHub.
+2. Click on the "Settings" tab.
+3. In the "Options" section, scroll down to the "Danger Zone".
+4. Click on "Change repository visibility".
+5. Select "Public" and confirm your choice.
+
+## Note
+
+The repository is now published and accessible to the public.
