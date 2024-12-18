@@ -24,7 +24,6 @@ In the future, we will add ships with a smarter algorithm.
 
 3. Open `index.html` in your web browser to start the game.
 
-
 ## Note
 
 The repository is now published and accessible to the public.
