@@ -106,16 +106,58 @@ const enemyShips = [
     new EnemyShip(20, 20)
 ];
 
+let turn = 0;
+
+function handlePlayerInput(event) {
+    switch (event.key) {
+        case 'ArrowUp':
+            playerShip.move('up');
+            break;
+        case 'ArrowDown':
+            playerShip.move('down');
+            break;
+        case 'ArrowLeft':
+            playerShip.move('left');
+            break;
+        case 'ArrowRight':
+            playerShip.move('right');
+            break;
+        case 'w':
+            playerShip.move('up-left');
+            break;
+        case 'e':
+            playerShip.move('up-right');
+            break;
+        case 's':
+            playerShip.move('down-left');
+            break;
+        case 'd':
+            playerShip.move('down-right');
+            break;
+        case ' ':
+            playerShip.shoot();
+            break;
+    }
+    turn++;
+    gameLoop();
+}
+
+document.addEventListener('keydown', handlePlayerInput);
+
 function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     playerShip.draw();
-    enemyShips.forEach(ship => {
-        ship.moveRandomly();
-        ship.draw();
-    });
-
-    requestAnimationFrame(gameLoop);
+    if (turn % 2 === 0) {
+        enemyShips.forEach(ship => {
+            ship.moveRandomly();
+            ship.draw();
+        });
+    } else {
+        enemyShips.forEach(ship => {
+            ship.draw();
+        });
+    }
 }
 
 gameLoop();
