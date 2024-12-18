@@ -1,2 +1,1 @@
-# llm-ai-pirate-game
-A repository for a pirate-themed game
+This repository is empty. Any task executed on it should be considered a new capability and needs to be created.
