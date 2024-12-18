@@ -44,6 +44,22 @@ class PlayerShip {
 
     shoot() {
         // Shooting logic
+        let hitEnemy = null;
+        enemyShips.forEach((ship, index) => {
+            if (this.direction === 'left' && this.x - 1 === ship.x && this.y === ship.y) {
+                hitEnemy = index;
+            } else if (this.direction === 'right' && this.x + 1 === ship.x && this.y === ship.y) {
+                hitEnemy = index;
+            } else if (this.direction === 'up' && this.y - 1 === ship.y && this.x === ship.x) {
+                hitEnemy = index;
+            } else if (this.direction === 'down' && this.y + 1 === ship.y && this.x === ship.x) {
+                hitEnemy = index;
+            }
+        });
+
+        if (hitEnemy !== null) {
+            enemyShips.splice(hitEnemy, 1);
+        }
     }
 
     draw() {
